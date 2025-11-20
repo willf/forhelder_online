@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memorial Tribute</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Typography -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap");
+
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-serif {
+        font-family: "Merriweather", serif;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Smooth transition for carousel slides */
+      .slide-enter {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+      .slide-active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- The App Container - Content is injected here by JavaScript -->
+    <div id="app"></div>
+
+    <!-- ========================================== -->
+    <!--      MINI CMS - EDIT CONTENT BELOW         -->
+    <!-- ========================================== -->
+    <script>
+      const INITIAL_DATA = {
+        theme: {
+          // Options: "stone", "slate", "zinc", "neutral", "gray"
+          primaryColor: "stone",
+          // Options: "blue", "indigo", "rose", "teal", "emerald"
+          accentColor: "blue",
+        },
+        hero: {
+          name: "Helder Ramírez Mazariegos",
+          dates: "June 15, 1998 – November 16, 2025",
+          tagline:
+            "“Not my will, but thine” / “no se haga mi voluntad, sino la tuya”",
+          image: "photos/IMG_6290.jpeg",
+        },
+        obituary: {
+          title: "In Loving Memory",
+          content: `Helder Ramirez Mazariegos, 27, passed away peacefully on November 16, 2025.
+          `,
+        },
+        eulogies: [
+          {
+            author: "Will Fitzgerald",
+            relation: "Friend",
+            text: "We loved Helder like a son.",
+          },
+        ],
+        gallery: [
+          {
+            url: "photos/DSC01574.jpeg",
+            alt: "Helder and a crop of tomatoes in Kalamazoo",
+            caption: "Fitzgeralds' House, 2017",
+            orientation: "landscape",
+          },
+          {
+            url: "photos/IMG_0002.jpeg",
+            alt: "Helder, September, 2019",
+            caption: "September, 2019",
+            orientation: "portrait",
+          },
+          {
+            url: "photos/IMG_1596.jpeg",
+            alt: "Helder at the Mackinaw Bridge",
+            caption: "Helder at the Mackinaw Bridge, March, 2019",
+            orientation: "landscape",
+          },
+          {
+            url: "photos/IMG_1597.jpeg",
+            alt: "Helder at the Mackinaw Bridge",
+            caption: "Helder at the Mackinaw Bridge, March, 2019",
+            orientation: "portrait",
+          },
+          {
+            url: "photos/IMG_1605.jpeg",
+            alt: "Helder at the Mackinaw Bridge",
+            caption: "Helder at the Mackinaw Bridge, March, 2019",
+            orientation: "portrait",
+          },
+          {
+            url: "photos/IMG_1902.jpeg",
+            alt: "Helder eating ice cream",
+            caption: "Helder's birthday, June 15, 2019",
+            orientation: "portrait",
+          },
+          {
+            url: "photos/IMG_5237.jpeg",
+            alt: "Will, Bess, and Helder",
+            caption: "Fitzgeralds' House, October 31, 2021",
+            orientation: "landscape",
+          },
+          {
+            url: "photos/IMG_4308.jpeg",
+            alt: "Christmas tamales",
+            caption: "December 24, 2020",
+            orientation: "portrait",
+          },
+          {
+            url: "photos/IMG_5312.jpeg",
+            alt: "Thanksgiving Samosas",
+            caption: "Thanksgiving, 2021",
+            orientation: "portrait",
+          },
+          {
+            url: "photos/IMG_6290.jpeg",
+            alt: "Helder",
+            caption: "July, 2022",
+            orientation: "portrait",
+          },
+          {
+            url: "photos/029eb669-56fb-41ce-bcf8-d96040efb137.jpeg",
+            alt: "Helder y Nora",
+            caption: "December, 2024",
+            orientation: "landscape",
+          },
+          {
+            url: "photos/IMG_9383.jpeg",
+            alt: "Helder and Friends",
+            caption: "November, 2025",
+            orientation: "landscape",
+          },
+        ],
+        contributors: [
+          "Elizabeth Segovia",
+          "Scott and Vicky Robbins",
+          "Gillian Inksetter",
+          "Karen Garcia",
+          "Lizbeth Mendoza",
+          "Miguel Zavala",
+          "Evelyn Lamb",
+          "Ellen Wend",
+          "Linda Selph",
+          "Erik Schwab",
+          "Rachel Hall",
+          "Juan Ferrufino",
+          "Andrew Neevel",
+          "Elyse Connors",
+          "Brandon Buxton",
+          "Laura Rajzer",
+          "Dawit Tesfu",
+          "Derek Buckland",
+          "Yobani Gomez",
+          "Pleasance Crawford",
+          "David Ivey",
+          "Andrea Allen",
+          "Robin Burgamy",
+          "Erica Fitzgerald & Family",
+          "Janice Maatman",
+          "Annie Grieshop",
+          "Vivian Abramowitz",
+          "Federico Hernandez",
+          "Jane Trejo",
+          "Brooke McMahan",
+          "Jonathan Tucker",
+          "David Nshumbusho",
+          "Trisha Genei",
+          "Kelly Rybicki",
+          "David Huisman",
+          "Santiago Salinas",
+          "Mohsin Raza",
+          "Shafiq Hafizul",
+          "Sheila Lienemann",
+          "Sandra Ixcot",
+          "Christie Krull",
+          "Yamila Escobar",
+          "Ronny Mazariegos",
+          "Yadira Ramirez",
+          "Keiner Mazariegos Lucas",
+          "Margaret Ells",
+          "Ali Ahmadi",
+          "Brent Hepp",
+          "Margarita Lopez Mazariegos",
+          "Deborah Kraak",
+          "Steve Fitzgerald",
+          "Dionicio Lopez Mazariegos",
+          "Angie Folkersma",
+          "Jeralyn Folkersma",
+          "Will and Bess Fitzgerald",
+          "Dervin Ramírez",
+          "John Hoerr",
+          "Socorro Escobar",
+          "Sara Stockinger",
+          "Enoc Reyes",
+          "Maria Cortez",
+          "Pedro Cortez-Ramirez",
+          "Daniel Fitzgerald",
+          "Yasmin Garcia Alvarez",
+          "Braulio Patino Martinez",
+          "Francisco Blanco",
+          "Romeo Ramirez",
+          "Jane Kramer",
+          "denise valette",
+          "Fernando Barbosa",
+          "Alison S Sklarczyk",
+          "Juanito Ramirez",
+          "Jason Byler",
+          "Michelle Tschannen",
+          "Donna and Rick Neevel",
+          "Caitlin Kujacznski",
+          "Tala Davidson",
+          "Callie Smith",
+          "Gildardo Perez",
+          "Mary Lou Boughton",
+          "Shimey Rios",
+          "Furaha Nyirandegeya",
+        ],
+        contact: {
+          email: "will.fitzgerald@gmail.com",
+          message:
+            "Please reach out if you have photos to share or stories to tell.",
+        },
+      };
+
+      // ==========================================
+      //      LOGIC - DO NOT EDIT BELOW HERE
+      // ==========================================
+
+      // Theme Configurations
+      const THEMES = {
+        stone: {
+          bg: "bg-stone-50",
+          text: "text-stone-800",
+          muted: "text-stone-500",
+          border: "border-stone-200",
+          accent: "bg-stone-800",
+          prose: "prose-stone",
+          link: "text-stone-600",
+        },
+        slate: {
+          bg: "bg-slate-50",
+          text: "text-slate-800",
+          muted: "text-slate-500",
+          border: "border-slate-200",
+          accent: "bg-slate-800",
+          prose: "prose-slate",
+          link: "text-slate-600",
+        },
+        zinc: {
+          bg: "bg-zinc-50",
+          text: "text-zinc-800",
+          muted: "text-zinc-500",
+          border: "border-zinc-200",
+          accent: "bg-zinc-800",
+          prose: "prose-zinc",
+          link: "text-zinc-600",
+        },
+        neutral: {
+          bg: "bg-neutral-50",
+          text: "text-neutral-800",
+          muted: "text-neutral-500",
+          border: "border-neutral-200",
+          accent: "bg-neutral-800",
+          prose: "prose-neutral",
+          link: "text-neutral-600",
+        },
+        gray: {
+          bg: "bg-gray-50",
+          text: "text-gray-800",
+          muted: "text-gray-500",
+          border: "border-gray-200",
+          accent: "bg-gray-800",
+          prose: "prose-gray",
+          link: "text-gray-600",
+        },
+      };
+
+      const ACCENTS = {
+        blue: "text-blue-600",
+        indigo: "text-indigo-600",
+        rose: "text-rose-600",
+        teal: "text-teal-600",
+        emerald: "text-emerald-600",
+      };
+
+      // Application State
+      let currentPhotoIndex = 0;
+      let currentEulogyIndex = 0;
+      let galleryPaused = false;
+
+      function renderApp() {
+        const t = THEMES[INITIAL_DATA.theme.primaryColor] || THEMES.stone;
+        const accentClass =
+          ACCENTS[INITIAL_DATA.theme.accentColor] || ACCENTS.blue;
+        const d = INITIAL_DATA;
+
+        // Determine initial orientation classes
+        const initPhoto = d.gallery[0];
+        const initOrientationClass =
+          initPhoto.orientation === "portrait"
+            ? "aspect-[2/3] max-w-md"
+            : "aspect-[3/2] max-w-4xl";
+
+        const app = document.getElementById("app");
+
+        app.innerHTML = `
+                <div class="min-h-screen ${t.bg} ${
+          t.text
+        } font-sans selection:bg-gray-200">
+
+                    <!-- Hero Section -->
+                    <header class="relative h-[85vh] w-full overflow-hidden">
+                        <div class="absolute inset-0 bg-black/40 z-10"></div>
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent z-10"></div>
+                        <img src="${d.hero.image}" alt="Portrait of ${
+          d.hero.name
+        }" class="absolute inset-0 w-full h-full object-cover animate-fade-in">
+
+                        <div class="relative z-20 h-full container mx-auto px-6 flex flex-col justify-center items-center text-center text-white">
+                            <div class="animate-fade-in max-w-4xl">
+                                <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 tracking-tight drop-shadow-lg">${
+                                  d.hero.name
+                                }</h1>
+                                <p class="text-xl md:text-3xl font-light tracking-widest uppercase opacity-90 mb-8 drop-shadow-md">${
+                                  d.hero.dates
+                                }</p>
+                                <div class="w-24 h-1 bg-white/80 mx-auto mb-8 rounded-full"></div>
+                                <p class="text-lg md:text-2xl font-light italic opacity-90 max-w-2xl mx-auto leading-relaxed drop-shadow-sm">${
+                                  d.hero.tagline
+                                }</p>
+                            </div>
+                        </div>
+                    </header>
+
+                    <main class="container mx-auto px-4 md:px-6 py-20 md:py-32 space-y-32 max-w-5xl">
+
+                        <!-- Obituary -->
+                        <article class="prose ${
+                          t.prose
+                        } prose-lg md:prose-xl mx-auto text-center">
+                            <div class="flex justify-center mb-6">
+                                <i data-lucide="book-open" class="w-8 h-8 ${
+                                  t.muted
+                                }"></i>
+                            </div>
+                            <h2 class="text-3xl md:text-5xl font-serif font-semibold mb-10 ${
+                              t.text
+                            }">${d.obituary.title}</h2>
+                            <div class="whitespace-pre-line leading-relaxed ${
+                              t.muted
+                            }">${d.obituary.content}</div>
+                        </article>
+
+                        <!-- Photo Gallery -->
+                        <section class="relative bg-white p-4 md:p-8 rounded-2xl shadow-xl border border-gray-100"
+                            onmouseenter="galleryPaused = true" onmouseleave="galleryPaused = false">
+                            <div class="flex justify-center mb-6">
+                                <i data-lucide="camera" class="w-8 h-8 ${
+                                  t.muted
+                                }"></i>
+                            </div>
+                            <h2 class="text-2xl font-serif text-center mb-8 ${
+                              t.text
+                            }">Cherished Moments</h2>
+
+                            <div id="gallery-container" class="relative ${initOrientationClass} mx-auto ${
+          t.bg
+        } rounded-xl overflow-hidden group shadow-inner transition-all duration-500 ease-in-out">
+                                <img id="gallery-img" src="${
+                                  d.gallery[0].url
+                                }" alt="${
+          d.gallery[0].alt
+        }" class="w-full h-full object-contain md:object-cover slide-active transition-all duration-500">
+
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-8 pt-24 text-white">
+                                    <div class="max-w-3xl mx-auto text-center">
+                                        <p id="gallery-caption" class="text-xl font-medium tracking-wide slide-active transition-all duration-500">${
+                                          d.gallery[0].caption
+                                        }</p>
+                                    </div>
+                                </div>
+
+                                <!-- Controls -->
+                                <button onclick="moveGallery(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white p-3 rounded-full backdrop-blur-md transition-all hover:scale-110" aria-label="Previous photo">
+                                    <i data-lucide="chevron-left" class="w-7 h-7"></i>
+                                </button>
+                                <button onclick="moveGallery(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white p-3 rounded-full backdrop-blur-md transition-all hover:scale-110" aria-label="Next photo">
+                                    <i data-lucide="chevron-right" class="w-7 h-7"></i>
+                                </button>
+                            </div>
+
+                            <!-- Indicators -->
+                            <div id="gallery-dots" class="flex justify-center gap-3 mt-6">
+                                ${d.gallery
+                                  .map(
+                                    (_, idx) => `
+                                    <button onclick="setGallery(${idx})" class="gallery-dot h-2 rounded-full transition-all duration-300 ${
+                                      idx === 0
+                                        ? `${t.accent} w-8`
+                                        : "bg-gray-300 w-2 hover:bg-gray-400"
+                                    }" aria-label="Go to photo ${
+                                      idx + 1
+                                    }"></button>
+                                `
+                                  )
+                                  .join("")}
+                            </div>
+                        </section>
+
+                        <!-- Eulogies -->
+                        <section class="${
+                          t.bg
+                        } rounded-3xl p-8 md:p-20 relative text-center shadow-sm">
+                            <div class="flex justify-center mb-6">
+                                <i data-lucide="heart" class="w-8 h-8 ${accentClass}"></i>
+                            </div>
+                            <h2 class="text-2xl font-serif mb-12 ${
+                              t.text
+                            }">Tributes & Memories</h2>
+
+                            <div class="max-w-3xl mx-auto relative min-h-[240px] flex flex-col justify-center">
+                                <div class="text-6xl ${
+                                  t.muted
+                                } font-serif opacity-20 absolute -top-10 -left-4 select-none">"</div>
+
+                                <div id="eulogy-container" class="slide-active transition-all duration-500">
+                                    <p class="text-xl md:text-3xl font-light leading-relaxed ${
+                                      t.text
+                                    } italic mb-8 z-10 relative">${
+          d.eulogies[0].text
+        }</p>
+                                    <div class="font-serif">
+                                        <div class="font-bold text-lg ${
+                                          t.text
+                                        }">${d.eulogies[0].author}</div>
+                                        <div class="${
+                                          t.muted
+                                        } text-sm uppercase tracking-widest mt-2 font-medium">${
+          d.eulogies[0].relation
+        }</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center gap-12 mt-12">
+                                    <button onclick="moveEulogy(-1)" class="${
+                                      t.muted
+                                    } hover:${
+          t.text
+        } transition-colors transform hover:-translate-x-1" aria-label="Previous tribute">
+                                        <i data-lucide="chevron-left" class="w-10 h-10"></i>
+                                    </button>
+                                    <button onclick="moveEulogy(1)" class="${
+                                      t.muted
+                                    } hover:${
+          t.text
+        } transition-colors transform hover:translate-x-1" aria-label="Next tribute">
+                                        <i data-lucide="chevron-right" class="w-10 h-10"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Contributors -->
+                        <section class="bg-white p-10 rounded-2xl shadow-lg ${
+                          t.border
+                        } border max-w-4xl mx-auto w-full">
+                            <div class="flex justify-center mb-6">
+                                <i data-lucide="users" class="w-6 h-6 ${
+                                  t.muted
+                                }"></i>
+                            </div>
+                            <h3 class="text-xl font-serif font-semibold text-center mb-8 tracking-wide">With Gratitude To</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3 text-center ${
+                              t.muted
+                            } text-sm">
+                                ${d.contributors
+                                  .map(
+                                    (person) => `
+                                    <div class="py-2 border-b ${t.border} last:border-0">${person}</div>
+                                `
+                                  )
+                                  .join("")}
+                            </div>
+                        </section>
+
+                        <!-- Contact -->
+                        <section class="${
+                          t.accent
+                        } text-white p-10 rounded-2xl shadow-lg flex flex-col justify-center text-center max-w-2xl mx-auto w-full">
+                            <div class="flex justify-center mb-6">
+                                <i data-lucide="mail" class="w-8 h-8 text-white/70"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-semibold mb-4">Share your memories</h3>
+                            <p class="text-white/80 mb-10 leading-relaxed text-lg">${
+                              d.contact.message
+                            }</p>
+                            <a href="mailto:${
+                              d.contact.email
+                            }" class="inline-block bg-white ${
+          t.text
+        } px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition-all hover:scale-105 mx-auto shadow-md">
+                                Send an Email
+                            </a>
+                        </section>
+
+                    </main>
+
+                    <!-- Footer -->
+                    <footer class="${
+                      t.accent
+                    } brightness-75 text-white/60 py-16">
+                        <div class="container mx-auto px-6 text-center">
+                            <p class="mb-8 text-white/50 font-serif italic text-xl">Forever in our hearts.</p>
+                            <div class="flex flex-col md:flex-row justify-center items-center gap-6 text-sm font-medium">
+                                <a href="https://web.archive.org/save/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors group" title="Save this page to the Internet Archive">
+                                    <i data-lucide="save" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                                    <span>Preserve on Internet Archive</span>
+                                </a>
+                                <span class="hidden md:inline opacity-30">&bull;</span>
+                                <span>Created with love</span>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            `;
+
+        // Initialize Icons
+        lucide.createIcons();
+      }
+
+      // --- Interactions ---
+
+      function updateGalleryUI() {
+        const d = INITIAL_DATA;
+        const img = document.getElementById("gallery-img");
+        const cap = document.getElementById("gallery-caption");
+        const container = document.getElementById("gallery-container");
+        const dots = document.querySelectorAll(".gallery-dot");
+        const t = THEMES[INITIAL_DATA.theme.primaryColor] || THEMES.stone;
+
+        // Update Container Shape based on Orientation
+        const orientation =
+          d.gallery[currentPhotoIndex].orientation || "landscape";
+
+        // Reset classes first
+        container.classList.remove(
+          "aspect-[3/2]",
+          "max-w-4xl",
+          "aspect-[2/3]",
+          "max-w-md"
+        );
+
+        if (orientation === "portrait") {
+          container.classList.add("aspect-[2/3]", "max-w-md");
+        } else {
+          container.classList.add("aspect-[3/2]", "max-w-4xl");
+        }
+
+        // Quick fade out/in effect
+        img.style.opacity = 0.5;
+        cap.style.opacity = 0;
+
+        setTimeout(() => {
+          img.src = d.gallery[currentPhotoIndex].url;
+          img.alt = d.gallery[currentPhotoIndex].alt;
+          cap.innerText = d.gallery[currentPhotoIndex].caption;
+          img.style.opacity = 1;
+          cap.style.opacity = 1;
+        }, 200);
+
+        // Update dots
+        dots.forEach((dot, idx) => {
+          if (idx === currentPhotoIndex) {
+            dot.className = `gallery-dot h-2 rounded-full transition-all duration-300 ${t.accent} w-8`;
+          } else {
+            dot.className = `gallery-dot h-2 rounded-full transition-all duration-300 bg-gray-300 w-2 hover:bg-gray-400`;
+          }
+        });
+      }
+
+      function moveGallery(direction) {
+        const len = INITIAL_DATA.gallery.length;
+        currentPhotoIndex = (currentPhotoIndex + direction + len) % len;
+        updateGalleryUI();
+      }
+
+      function setGallery(index) {
+        currentPhotoIndex = index;
+        updateGalleryUI();
+      }
+
+      function moveEulogy(direction) {
+        const d = INITIAL_DATA;
+        const len = d.eulogies.length;
+        currentEulogyIndex = (currentEulogyIndex + direction + len) % len;
+
+        const container = document.getElementById("eulogy-container");
+        container.style.opacity = 0;
+        container.style.transform = "translateY(5px)";
+
+        const t = THEMES[INITIAL_DATA.theme.primaryColor] || THEMES.stone;
+
+        setTimeout(() => {
+          container.innerHTML = `
+                    <p class="text-xl md:text-3xl font-light leading-relaxed ${t.text} italic mb-8 z-10 relative">${d.eulogies[currentEulogyIndex].text}</p>
+                    <div class="font-serif">
+                        <div class="font-bold text-lg ${t.text}">${d.eulogies[currentEulogyIndex].author}</div>
+                        <div class="${t.muted} text-sm uppercase tracking-widest mt-2 font-medium">${d.eulogies[currentEulogyIndex].relation}</div>
+                    </div>
+                `;
+          container.style.opacity = 1;
+          container.style.transform = "translateY(0)";
+        }, 300);
+      }
+
+      // --- Initialization ---
+
+      document.addEventListener("DOMContentLoaded", () => {
+        renderApp();
+
+        // Auto-advance gallery
+        setInterval(() => {
+          if (!galleryPaused) {
+            moveGallery(1);
+          }
+        }, 6000);
+
+        // Keyboard navigation
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") moveGallery(-1);
+          if (e.key === "ArrowRight") moveGallery(1);
+        });
+      });
+    </script>
+  </body>
+</html>
