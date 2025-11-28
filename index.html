@@ -64,7 +64,9 @@
         },
         hero: {
           name: "Helder Ramírez Mazariegos",
-          dates: "June 15, 1998 – November 16, 2025",
+          dates: `June 15, 1998 – November 16, 2025
+
+            15 de junio de 1998 – 16 de noviembre de 2025`,
           tagline:
             "“Not my will, but thine” · “No se haga mi voluntad, sino la tuya”",
           image: "photos/IMG_6290.jpeg",
@@ -86,7 +88,7 @@
                   Helder is survived by Norayda Ester López Reynoso and their daughter Alice Maria Ramírez López; his parents Fidencio Odilón Ramírez Escobar and Delfidia Fidelina Mazariegos Escobar; his grandfather Reynaldo Izabel Ramírez Escobar; and siblings Dauri, Angelica, Reynaldo, Rolinda, and Belinda Ramírez Mazariegos. He was predeceased by his grandmother, Delia Escobar.
 
                             `,
-          content_es: `**Helder Ramírez Mazariegos** (16 de junio de 1998 – 16 de noviembre de 2025) vivió tanto el sueño guatemalteco como el sueño americano.
+          content_es: `**Helder Ramírez Mazariegos** (15 de junio de 1998 – 16 de noviembre de 2025) vivió tanto el sueño guatemalteco como el sueño americano.
 
                   Helder nació en El Chical, una aldea de Cuilco, en el departamento de Huehuetenango, Guatemala, cerca de la frontera con México. Fue hijo de Fidencio Ramírez y Delfidia Mazariegos. Pasó su infancia en los campos y montañas del occidente de Guatemala, aprendiendo a cultivar y cosechar maíz, frijol y ayote, así como otros cultivos y el cuidado de animales de granja. Aprendió sabiduría e integridad de su abuelo, Reynaldo Ramírez. Le encantaba caminar, montar a caballo, jugar fútbol y emprender pequeñas aventuras. Siendo aún joven, conoció a una hermosa muchacha, Norayda López Reynoso, y pronto se convirtieron en pareja. De su amor nació su hija, Alice.
 
@@ -278,11 +280,12 @@
           "Derek Buckland",
           "Robin Burgamy",
           "Brandon Buxton",
-          "Jason Byler",
+          "Jason and Janine Byler",
+          "Cedar Grove Mennonite Church",
           "Adileny Claudio",
           "Elyse Connors",
           "Maria Cortez",
-          "Pleasance Crawford",
+          "Pleasance and Chuck Crawford",
           "Tala Davidson",
           "Margaret Ells",
           "Juan Ferrufino",
@@ -292,6 +295,7 @@
           "Zachary Franklin",
           "Karen Garcia",
           "Trisha Genei",
+          " Gonzalez Family",
           "Annie Grieshop",
           "Javier Gudino",
           "Shafiq Hafizul",
@@ -309,17 +313,17 @@
           "Kathy Lake",
           "Evelyn Lamb",
           "Sheila Lienemann",
-          "Cecilio Eraldo Martinez Ramirez",
           "Margarita Lopez Mazariegos",
           "Janice Maatman",
+          "Cecilio Eraldo Martinez Ramirez",
           "Ronny Mazariegos",
           "Keiner Mazariegos Lucas",
           "Brooke McMahan",
           "Noelia Mendez",
           "Lizbeth Mendoza",
-          "Donna and Rick Neevel",
+          "Roxanna Morse",
+          "Donna and Rick  Neevel",
           "Gildardo Perez",
-          "Juanito Ramirez",
           "Juanito Ramirez",
           "Romeo Ramirez",
           "Dervin Ramírez",
@@ -329,11 +333,12 @@
           "Emma Robbins",
           "Scott and Vicky Robbins",
           "Kelly Rybicki",
-          "Alison S Sklarczyk",
           "Santiago Salinas",
           "Erik Schwab",
           "Elizabeth Segovia",
           "Linda Selph",
+          "Virginia Shilliday",
+          "Alison S Sklarczyk",
           "Callie Smith",
           "Sara Stockinger",
           "Dawit Tesfu",
@@ -341,6 +346,7 @@
           "Michelle Tschannen",
           "Ellen Wend",
           "Miguel Zavala",
+          "And others",
         ],
         contact: {
           email: "will.fitzgerald@gmail.com",
@@ -486,9 +492,9 @@
                                                   <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 tracking-tight drop-shadow-lg">${
                                                     d.hero.name
                                                   }</h1>
-                                                  <p class="text-xl md:text-3xl font-light tracking-widest uppercase opacity-90 mb-8 drop-shadow-md">${
+                                                  <p class="text-xl md:text-3xl font-light tracking-widest uppercase opacity-90 mb-8 drop-shadow-md">${renderMarkdownText(
                                                     d.hero.dates
-                                                  }</p>
+                                                  )}</p>
                                                   <div class="w-24 h-1 bg-white/80 mx-auto mb-8 rounded-full"></div>
                                                   <p class="text-lg md:text-2xl font-light italic opacity-90 max-w-2xl mx-auto leading-relaxed drop-shadow-sm">${
                                                     d.hero.tagline
@@ -583,7 +589,7 @@
                                               </div>
                                               <h2 class="text-2xl font-serif mb-12 ${
                                                 t.text
-                                              }">Tributes & Memories</h2>
+                                              }">Tributes & Memories · Homenajes y recuerdos</h2>
 
                                               <div class="max-w-3xl mx-auto relative min-h-[240px] flex flex-col justify-center">
                                                   <div class="text-6xl ${
@@ -640,14 +646,14 @@
                                                     t.muted
                                                   }"></i>
                                               </div>
-                                              <h3 class="text-xl font-serif font-semibold text-center mb-8 tracking-wide">With Gratitude To</h3>
-                                              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3 text-center ${
+                                              <h3 class="text-xl font-serif font-semibold text-center mb-8 tracking-wide">Repatriation Donors · Donantes de repatriación</h3>
+                                              <div class="columns-1 sm:columns-2 md:columns-3 gap-8 text-center ${
                                                 t.muted
                                               } text-sm">
                                                   ${d.contributors
                                                     .map(
                                                       (person) => `
-                                                      <div class="py-2 border-b ${t.border} last:border-0">${person}</div>
+                                                      <div class="py-2 border-b ${t.border} break-inside-avoid">${person}</div>
                                                   `
                                                     )
                                                     .join("")}
@@ -661,7 +667,7 @@
                                               <div class="flex justify-center mb-6">
                                                   <i data-lucide="mail" class="w-8 h-8 text-white/70"></i>
                                               </div>
-                                              <h3 class="text-2xl font-serif font-semibold mb-4">Share your memories</h3>
+                                              <h3 class="text-2xl font-serif font-semibold mb-4">Share your memories · Comparta sus recuerdos</h3>
                                               <p class="text-white/80 mb-10 leading-relaxed text-lg">${
                                                 d.contact.message
                                               }</p>
@@ -670,7 +676,7 @@
                                               }" class="inline-block bg-white ${
           t.text
         } px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition-all hover:scale-105 mx-auto shadow-md">
-                                                  Send an Email
+                                                  Send · Enviar Email
                                               </a>
                                           </section>
 
